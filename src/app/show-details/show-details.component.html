@@ -1,0 +1,127 @@
+<div class="min-h-screen bg-[#0f1117] text-white">
+    <header class="bg-[#0f1117] py-3 px-4 md:py-4 md:px-6 flex items-center">
+        <button class="flex items-center space-x-1 md:space-x-2 text-gray-300 hover:text-white transition cursor-pointer"
+            (click)="goToHome()">
+            <lucide-angular [img]="arrowLeft" class="my-icon h-4 w-4 md:h-5 md:w-5"></lucide-angular>
+            <span>Back</span>
+        </button>
+        <div class="ml-3 md:ml-4">
+            <h1 class="md:text-xl text-2xl font-bold text-red-500">FletNix</h1>
+        </div>
+    </header>
+    <main class="px-3 md:px-6 py-4 md:py-8 max-w-7xl mx-auto">
+        <div class="flex flex-col">
+            <div class="relative w-full h-[300px] mb-4 md:mb-8 rounded-xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80"
+                    [alt]="show?.title" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f1117] via-transparent to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0f1117] via-[#0f1117]/70 to-transparent z-10">
+                </div>
+
+                <div class="absolute bottom-0 left-0 p-4 md:p-6 lg:p-8 z-20 w-full">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">{{ show?.title }}</h1>
+                    <div class="flex items-center space-x-2 md:space-x-4 mb-3 md:mb-6 text-sm md:text-base">
+                        <span class="text-gray-300">{{ show?.release_year }}</span>
+                        <span class="text-gray-300">•</span>
+                        <span class="bg-gray-700 px-2 py-1 rounded text-xs md:text-sm">{{ show?.rating }}</span>
+                        <span class="text-gray-300">•</span>
+                        <span class="text-gray-300">{{ show?.duration }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="col-span-1 lg:col-span-2">
+                    <p class="text-base md:text-lg text-gray-300 mb-6 md:mb-8">{{ show?.description }}</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+                        <div *ngIf="show?.director">
+                            <h3 class="text-gray-400 mb-1 md:mb-2 text-sm md:text-base">Director</h3>
+                            <p class="text-white text-sm md:text-base">{{ show?.director }}</p>
+                        </div>
+                        <div *ngIf="show?.country">
+                            <h3 class="text-gray-400 mb-1 md:mb-2 text-sm md:text-base">Country</h3>
+                            <p class="text-white text-sm md:text-base">{{ show?.country }}</p>
+                        </div>
+                        <div *ngIf="show?.date_added">
+                            <h3 class="text-gray-400 mb-1 md:mb-2 text-sm md:text-base">Date Added</h3>
+                            <p class="text-white text-sm md:text-base">{{ show?.date_added }}</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-6 md:mb-8" *ngIf="show?.cast">
+                        <h3 class="text-gray-400 mb-2 text-sm md:text-base">Cast</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span *ngFor="let actor of show?.cast?.split(', ')"
+                                class="bg-gray-800 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
+                                {{ actor }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div *ngIf="show?.listed_in">
+                        <h3 class="text-gray-400 mb-2 text-sm md:text-base">Genres</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span *ngFor="let genre of show?.listed_in?.split(', ')"
+                                class="bg-gray-800 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
+                                {{ genre }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-1 order-first lg:order-last mb-6 lg:mb-0">
+                    <div class="bg-[#1a1d29] rounded-xl p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Details</h3>
+                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
+                            <div class="flex items-center space-x-3" *ngIf="show?.rating">
+                                <lucide-angular [img]="star"
+                                    class="my-icon h-5 w-5 text-yellow-500 flex-shrink-0"></lucide-angular>
+                                <div>
+                                    <p class="text-gray-400 text-xs md:text-sm">Rating</p>
+                                    <p class="text-white text-sm md:text-base">{{show?.rating}}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3" *ngIf="show?.release_year">
+                                <lucide-angular [img]="calendar"
+                                    class="my-icon h-5 w-5 text-blue-500 flex-shrink-0"></lucide-angular>
+                                <div>
+                                    <p class="text-gray-400 text-xs md:text-sm">Release Year</p>
+                                    <p class="text-white text-sm md:text-base">{{show?.release_year}}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3" *ngIf="show?.duration">
+                                <lucide-angular [img]="clock"
+                                    class="my-icon h-5 w-5 text-green-500 flex-shrink-0"></lucide-angular>
+                                <div>
+                                    <p class="text-gray-400 text-xs md:text-sm">Duration</p>
+                                    <p class="text-white text-sm md:text-base">{{show?.duration}}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3" *ngIf="show?.country">
+                                <lucide-angular [img]="globe"
+                                    class="my-icon h-5 w-5 text-purple-500 flex-shrink-0"></lucide-angular>
+                                <div>
+                                    <p class="text-gray-400 text-xs md:text-sm">Country</p>
+                                    <p class="text-white text-sm md:text-base">{{show?.country}}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3" *ngIf="show?.type">
+                                <lucide-angular [img]="listFilter"
+                                    class="my-icon h-5 w-5 text-red-500 flex-shrink-0"></lucide-angular>
+                                <div>
+                                    <p class="text-gray-400 text-xs md:text-sm">Type</p>
+                                    <p class="text-white text-sm md:text-base">{{show?.type}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>

@@ -1,4 +1,4 @@
-<div class="relative group cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 hover:scale-105">
+<div class="relative group cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 hover:scale-105" (click)="goToDetails(id)">
     <img [src]="'https://picsum.photos/seed/' + title + '/200/300'" alt="{{ title }}"
         class="w-full aspect-[2/3] object-cover" />
     <div

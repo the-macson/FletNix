@@ -42,7 +42,7 @@
     <main class="container mx-auto px-4 pt-28 pb-12">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <app-card *ngFor="let show of showList" [title]="show.title" [type]="show.type" [year]="show.release_year"
-                [rating]="show.rating" [image]="show.image"></app-card>
+                [rating]="show.rating" [id]="show._id"></app-card>
         </div>
         <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer" *ngIf="showList.length > 0">
             <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-50" [disabled]="page === 1"

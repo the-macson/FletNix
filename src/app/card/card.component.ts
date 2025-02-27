@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -8,15 +9,16 @@ import { AuthService } from '../auth/auth.service';
   styleUrl: './card.component.css',
 })
 export class CardComponent {
+  @Input() id!: string;
   @Input() title!: string;
   @Input() type!: string;
   @Input() year!: number;
   @Input() rating!: string;
   @Input() image!: string;
   @Output() showSelected = new EventEmitter<void>();
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  logout() {
-    this.authService.logout();
+  goToDetails(id: string) {
+    this.router.navigate([id]);
   }
 }

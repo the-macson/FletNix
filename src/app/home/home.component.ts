@@ -15,12 +15,19 @@ import { CardComponent } from '../card/card.component';
 import { AuthService } from '../auth/auth.service';
 
 interface Show {
-  id: number;
+  _id: string;
   title: string;
   type: string;
   release_year: number;
   rating: string;
-  image: string;
+  show_id: string;
+  director: string;
+  cast: string;
+  country: string;
+  date_added: string;
+  duration: string;
+  listed_in: string;
+  description: string;
 }
 
 interface ApiResponse {
@@ -65,7 +72,7 @@ export class HomeComponent implements OnInit {
     searchKey: string | undefined
   ) => {
     this.apiService
-      .getPosts(page, limit, type, searchKey)
+      .getShows(page, limit, type, searchKey)
       .subscribe((data: ApiResponse) => {
         this.showList = data.shows;
         this.page = data.page;

@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(
+  getShows(
     page: number,
     limit: number,
     type: string | undefined,
@@ -24,5 +24,9 @@ export class ApiService {
       url += `&searchKey=${searchKey}`;
     }
     return this.http.get<any>(url);
+  }
+
+  getShowById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }
