@@ -1,0 +1,61 @@
+<div class="min-h-screen flex">
+    <div class="w-full lg:w-[40%] xl:w-[35%] bg-[#1a1f25] p-8 lg:p-16 flex flex-col justify-center">
+        <div class="mb-12">
+            <a routerLink="/" class="flex items-center space-x-2 text-red-500 text-2xl font-bold">
+                <lucide-angular [img]="film" class="my-icon" [size]="32"></lucide-angular>
+                <span>FletNix</span>
+            </a>
+        </div>
+
+        <h2 class="text-3xl font-bold text-white mb-8">Welcome Back</h2>
+        <p class="text-gray-400 mb-8">Please sign in to your account to continue watching your favorite shows and
+            movies.</p>
+
+        <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label htmlFor="email" class="block text-sm font-medium text-gray-300 mb-2">
+                    Email Address
+                </label>
+                <div class="relative">
+                    <lucide-angular [img]="mail" class="absolute left-1.5 top-1/2 transform -translate-y-1/2 text-gray-400"
+                        [size]="20"></lucide-angular>
+                    <input id="email" type="email" class="bg-[#2a303c] text-white w-full pl-10 pr-4 py-3 rounded-md focus:outline-none focus:ring-2
+                    focus:ring-red-500" placeholder="Enter your email" required formControlName="email" />
+                </div>
+            </div>
+
+            <div>
+                <label htmlFor="password" class="block text-sm font-medium text-gray-300 mb-2">
+                    Password
+                </label>
+                <div class="relative">
+                    <lucide-angular [img]="lock" class="absolute left-1.5 top-1/2 transform -translate-y-1/2 text-gray-400"
+                        [size]="20"></lucide-angular>
+                    <input id="password" type="password" class="bg-[#2a303c] text-white w-full pl-10 pr-4 py-3 rounded-md focus:outline-none focus:ring-2
+                    focus:ring-red-500" placeholder="Enter your password" required  formControlName="password" />
+                </div>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-red-500 text-white py-3 rounded-md hover:bg-red-600 transition duration-200 text-lg font-medium">
+                Sign In
+            </button>
+        </form>
+
+        <p class="mt-8 text-center text-gray-400">
+            Don't have an account?
+            <a routerLink="/register" class="text-red-500 hover:text-red-400 font-medium">
+                Register here
+            </a>
+        </p>
+    </div>
+
+    <div class="hidden lg:block lg:w-[60%] xl:w-[65%] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=2225&q=80'); background-position: center;">
+        <div class="h-full w-full bg-black bg-opacity-50 flex items-center justify-center p-16" style="background-color: rgba(0, 0, 0, 0.5)">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold text-white mb-6">Unlimited movies, TV shows, and more</h1>
+                <p class="text-xl text-gray-200">Watch anywhere. Cancel anytime.</p>
+            </div>
+        </div>
+    </div>
+</div>

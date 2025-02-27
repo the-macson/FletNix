@@ -1,0 +1,59 @@
+<div class="min-h-screen bg-gray-900 text-white">
+    <header class="bg-black/40 backdrop-blur-sm fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <h1 class="text-2xl font-bold text-red-600">FletNix</h1>
+
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="Search titles or cast members..." #searchInput
+                        class="w-full px-4 py-2 bg-gray-800 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-red-600"
+                        (input)="searchShows(searchInput.value)" />
+                    <lucide-angular [img]="search" class="absolute left-1.5 top-1/4 text-gray-400"
+                        [size]="20"></lucide-angular>
+                </div>
+
+                <div class="flex gap-2 relative">
+                    <button [ngClass]="{
+                            'px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer': true,
+                            'bg-red-600': showType ==='Movie',
+                            'bg-gray-800': showType !=='Movie'
+                        }" (click)="applyShowTypeFilter('Movie')">
+                        <lucide-angular [img]="film" class="my-icon" [size]="20"></lucide-angular>
+                        Movies
+                    </button>
+                    <button [ngClass]="{
+                            'px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer': true,
+                            'bg-red-600': showType==='TV Show',
+                            'bg-gray-800': showType !=='TV Show'
+                        }" (click)="applyShowTypeFilter('TV Show')">
+                        <lucide-angular [img]="tv" class="my-icon" [size]="20"></lucide-angular>
+                        TV Shows
+                    </button>
+                    <button class="px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer bg-red-600"
+                        (click)="logout()">
+                        <lucide-angular [img]="logOut" class="my-icon" [size]="20"></lucide-angular>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-28 pb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <app-card *ngFor="let show of showList" [title]="show.title" [type]="show.type" [year]="show.release_year"
+                [rating]="show.rating" [image]="show.image"></app-card>
+        </div>
+        <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer">
+            <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-50" [disabled]="page === 1"
+                (click)="prevPage()">
+                <lucide-angular [img]="chevronLeft" class="my-icon" [size]="24"></lucide-angular>
+            </button>
+            <span class="text-lg">Page {{page}}</span>
+            <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 cursor-pointer disabled:opacity-50"
+                [disabled]="!isNextPage" (click)="nextPage()">
+                <lucide-angular [img]="chevronRight" class="my-icon" [size]="24"></lucide-angular>
+            </button>
+        </div>
+    </main>
+</div>
