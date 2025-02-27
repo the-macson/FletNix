@@ -77,11 +77,11 @@
     </header>
 
     <main class="container mx-auto px-4 pt-28 md:pt-28 pb-12">
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
+        <div *ngIf="!isLoading" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
             <app-card *ngFor="let show of showList" [title]="show.title" [type]="show.type" [year]="show.release_year"
                 [rating]="show.rating" [id]="show._id"></app-card>
         </div>
-        <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer" *ngIf="showList.length > 0">
+        <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer" *ngIf="showList.length > 0 && !isLoading">
             <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-50" [disabled]="page === 1"
                 (click)="prevPage()">
                 <lucide-angular [img]="chevronLeft" class="my-icon" [size]="24"></lucide-angular>
@@ -92,8 +92,11 @@
                 <lucide-angular [img]="chevronRight" class="my-icon" [size]="24"></lucide-angular>
             </button>
         </div>
-        <div *ngIf="showList.length === 0" class="flex justify-center items-center h-96">
+        <div *ngIf="showList.length === 0 && !isLoading" class="flex justify-center items-center h-96">
             <h1 class="text-2xl">No shows found</h1>
+        </div>
+        <div *ngIf="isLoading" class="flex justify-center items-center h-96">
+            <lucide-angular [img]="loader" class="my-icon slow-spin" [size]="48"></lucide-angular>
         </div>
     </main>
 </div>

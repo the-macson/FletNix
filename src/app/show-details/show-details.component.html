@@ -10,7 +10,7 @@
         </div>
     </header>
     <main class="px-3 md:px-6 py-4 md:py-8 max-w-7xl mx-auto">
-        <div class="flex flex-col">
+        <div *ngIf="!isLoading" class="flex flex-col">
             <div class="relative w-full h-[300px] mb-4 md:mb-8 rounded-xl overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80"
                     [alt]="show?.title" class="w-full h-full object-cover" />
@@ -122,6 +122,8 @@
                 </div>
             </div>
         </div>
-
+        <div *ngIf="isLoading" class="flex justify-center items-center h-[300px]">
+            <lucide-angular [img]="loader" class="my-icon h-10 w-10 text-red-500 slow-spin"></lucide-angular>
+        </div>
     </main>
 </div>

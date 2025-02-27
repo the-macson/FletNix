@@ -9,6 +9,7 @@ import {
   ChevronRight,
   LogOut,
   Menu,
+  Loader
 } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
@@ -52,6 +53,8 @@ export class HomeComponent implements OnInit {
   readonly chevronRight = ChevronRight;
   readonly logOut = LogOut;
   readonly menu = Menu;
+  readonly loader = Loader;
+
   showFilterPopup = false;
   showMobileMenu = false;
   showList: Show[] = [];
@@ -60,8 +63,12 @@ export class HomeComponent implements OnInit {
   showType: string | undefined = undefined;
   searchKey: string | undefined = undefined;
   isNextPage: boolean = true;
-  constructor(private apiService: ApiService, private authService: AuthService) {}
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthService
+  ) {}
   timeout: any;
+  isLoading = true;
 
   ngOnInit(): void {
     this.fetchShows(this.page, this.limit, this.showType, this.searchKey);
@@ -73,14 +80,20 @@ export class HomeComponent implements OnInit {
     type: string | undefined,
     searchKey: string | undefined
   ) => {
-    this.apiService
-      .getShows(page, limit, type, searchKey)
-      .subscribe((data: ApiResponse) => {
+    this.isLoading = true;
+    this.apiService.getShows(page, limit, type, searchKey).subscribe({
+      next: (data: ApiResponse) => {
+        this.isLoading = false;
         this.showList = data.shows;
         this.page = data.page;
         this.limit = data.limit;
         this.isNextPage = data.isNextPage;
-      });
+      },
+      error: (error) => {
+        this.isLoading = false;
+        console.error(error);
+      },
+    });
   };
 
   nextPage() {
@@ -93,9 +106,9 @@ export class HomeComponent implements OnInit {
   }
 
   applyShowTypeFilter(type: string) {
-    if(this.showType === type) {
+    if (this.showType === type) {
       this.showType = undefined;
-    }else this.showType = type;
+    } else this.showType = type;
     this.page = 1;
     this.fetchShows(this.page, this.limit, this.showType, this.searchKey);
   }

@@ -15,6 +15,7 @@ import {
   Globe,
   ListFilter,
   ArrowLeft,
+  Loader,
 } from 'lucide-angular';
 
 interface Show {
@@ -37,9 +38,9 @@ interface Show {
   selector: 'app-show-details',
   imports: [CommonModule, LucideAngularModule],
   templateUrl: './show-details.component.html',
-  styleUrl: './show-details.component.css'
+  styleUrl: './show-details.component.css',
 })
-export class ShowDetailsComponent implements OnInit{
+export class ShowDetailsComponent implements OnInit {
   readonly play = Play;
   readonly plus = Plus;
   readonly thumbsUp = ThumbsUp;
@@ -51,9 +52,16 @@ export class ShowDetailsComponent implements OnInit{
   readonly globe = Globe;
   readonly listFilter = ListFilter;
   readonly arrowLeft = ArrowLeft;
+  readonly loader = Loader;
   showId: string | null = null;
   show: Show | null = null;
-  constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute) {}
+  isLoading = false;
+
+  constructor(
+    private router: Router,
+    private apiService: ApiService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -61,15 +69,21 @@ export class ShowDetailsComponent implements OnInit{
       if (this.showId) {
         this.fetchShowById(this.showId);
       }
-    })
+    });
   }
 
   fetchShowById = (id: string) => {
-    this.apiService.getShowById(id).subscribe((data: Show) => {
-      this.show = data;
-      console.log(this.show);
+    this.apiService.getShowById(id).subscribe({
+      next: (data: Show) => {
+        this.show = data;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.isLoading = false;
+        console.error(error);
+      },
     });
-  }
+  };
 
   goToHome() {
     this.router.navigate(['/']);
