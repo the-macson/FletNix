@@ -44,7 +44,7 @@
             <app-card *ngFor="let show of showList" [title]="show.title" [type]="show.type" [year]="show.release_year"
                 [rating]="show.rating" [image]="show.image"></app-card>
         </div>
-        <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer">
+        <div class="mt-8 flex justify-center items-center gap-4 cursor-pointer" *ngIf="showList.length > 0">
             <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-50" [disabled]="page === 1"
                 (click)="prevPage()">
                 <lucide-angular [img]="chevronLeft" class="my-icon" [size]="24"></lucide-angular>
@@ -54,6 +54,9 @@
                 [disabled]="!isNextPage" (click)="nextPage()">
                 <lucide-angular [img]="chevronRight" class="my-icon" [size]="24"></lucide-angular>
             </button>
+        </div>
+        <div *ngIf="showList.length === 0" class="flex justify-center items-center h-96">
+            <h1 class="text-2xl">No shows found</h1>
         </div>
     </main>
 </div>
