@@ -1,9 +1,14 @@
 <div class="min-h-screen bg-gray-900 text-white">
     <header class="bg-black/40 backdrop-blur-sm fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <div class="flex items-center justify-between md:hidden">
                 <h1 class="text-2xl font-bold text-red-600">FletNix</h1>
-
+                <button class="p-2 rounded-lg bg-gray-800 cursor-pointer" (click)="showMobileMenu = !showMobileMenu">
+                    <lucide-angular [img]="menu" class="my-icon" [size]="24"></lucide-angular>
+                </button>
+            </div>
+            <div class="hidden md:flex md:flex-row md:items-center gap-4">
+                <h1 class="text-2xl font-bold text-red-600">FletNix</h1>
                 <div class="flex-1 relative">
                     <input type="text" placeholder="Search titles or cast members..." #searchInput
                         class="w-full px-4 py-2 bg-gray-800 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-red-600"
@@ -36,11 +41,43 @@
                     </button>
                 </div>
             </div>
+            <div *ngIf="showMobileMenu" class="md:hidden mt-4 bg-gray-800 rounded-lg p-4 space-y-4 animate-fadeIn">
+                <div class="relative">
+                    <input type="text" placeholder="Search titles or cast members..." #searchInput
+                        class="w-full px-4 py-2 bg-gray-700 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-red-600"
+                        (input)="searchShows(searchInput.value)" />
+                    <lucide-angular [img]="search" class="absolute left-1.5 top-1/4 text-gray-400"
+                        [size]="20"></lucide-angular>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <button [ngClass]="{
+                            'px-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer': true,
+                            'bg-red-600': showType ==='Movie',
+                            'bg-gray-700': showType !=='Movie'
+                        }" (click)="applyShowTypeFilter('Movie')">
+                        <lucide-angular [img]="film" class="my-icon" [size]="20"></lucide-angular>
+                        Movies
+                    </button>
+                    <button [ngClass]="{
+                            'px-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer': true,
+                            'bg-red-600': showType==='TV Show',
+                            'bg-gray-700': showType !=='TV Show'
+                        }" (click)="applyShowTypeFilter('TV Show')">
+                        <lucide-angular [img]="tv" class="my-icon" [size]="20"></lucide-angular>
+                        TV Shows
+                    </button>
+                    <button class="px-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer bg-red-600 col-span-2"
+                        (click)="logout()">
+                        <lucide-angular [img]="logOut" class="my-icon" [size]="20"></lucide-angular>
+                        Logout
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 pt-28 pb-12">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <main class="container mx-auto px-4 pt-28 md:pt-28 pb-12">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
             <app-card *ngFor="let show of showList" [title]="show.title" [type]="show.type" [year]="show.release_year"
                 [rating]="show.rating" [id]="show._id"></app-card>
         </div>

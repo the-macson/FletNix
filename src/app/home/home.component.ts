@@ -7,7 +7,8 @@ import {
   Tv,
   ChevronLeft,
   ChevronRight,
-  LogOut
+  LogOut,
+  Menu,
 } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
@@ -50,8 +51,9 @@ export class HomeComponent implements OnInit {
   readonly chevronLeft = ChevronLeft;
   readonly chevronRight = ChevronRight;
   readonly logOut = LogOut;
+  readonly menu = Menu;
   showFilterPopup = false;
-
+  showMobileMenu = false;
   showList: Show[] = [];
   page = 1;
   limit = 15;

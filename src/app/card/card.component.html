@@ -2,12 +2,12 @@
     <img [src]="'https://picsum.photos/seed/' + title + '/200/300'" alt="{{ title }}"
         class="w-full aspect-[2/3] object-cover" />
     <div
-        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300">
-        <div class="absolute bottom-0 p-4 w-full">
-            <h3 class="text-lg font-semibold line-clamp-2">
+        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-100 md:group-hover:opacity-100 transition-opacity duration-300">
+        <div class="absolute bottom-0 p-2 md:p-4 w-full">
+            <h3 class="text-sm md:text-lg font-semibold line-clamp-2">
                 {{ title }}
             </h3>
-            <div class="flex items-center gap-2 text-sm text-gray-300 mt-1">
+            <div class="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-gray-300 mt-1">
                 <span>{{ year }}</span>
                 <span>•</span>
                 <span>{{ type }}</span>
