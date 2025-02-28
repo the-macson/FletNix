@@ -31,6 +31,7 @@ export class RegisterComponent {
   registerForm: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
+    this.authService.startServerless().subscribe();
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/']);
     }
