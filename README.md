@@ -44,12 +44,11 @@ FletNix is a streaming service that allows users to watch movies and TV shows.
 
 <img width="1708" alt="Screenshot 2025-02-28 at 4 57 11 PM" src="https://github.com/user-attachments/assets/25f6dc12-efed-46c7-8e08-69be458bb1e4" />
 
-
-![WhatsApp Image 2025-02-28 at 17 21 06](https://github.com/user-attachments/assets/4da4477c-852a-4b8d-9d77-28a26f07c747)
-![WhatsApp Image 2025-02-28 at 17 21 07](https://github.com/user-attachments/assets/8d331178-7c16-4b25-958e-229ee5c24359)
-![WhatsApp Image 2025-02-28 at 17 21 08](https://github.com/user-attachments/assets/e5e32f96-1ab8-466a-9f82-bec5fd78614a)
-![WhatsApp Image 2025-02-28 at 17 21 09](https://github.com/user-attachments/assets/38320dd0-70cc-4373-a50d-20ac4bc1af47)
-![WhatsApp Image 2025-02-28 at 17 21 09](https://github.com/user-attachments/assets/0c1037a6-873a-48b6-884b-257c081f1854)
+<img width="250" alt="WhatsApp Image 2025-02-28 at 17 21 06" src="https://github.com/user-attachments/assets/4da4477c-852a-4b8d-9d77-28a26f07c747" />
+<img width="250" alt="WhatsApp Image 2025-02-28 at 17 21 07" src="https://github.com/user-attachments/assets/8d331178-7c16-4b25-958e-229ee5c24359" />
+<img width="250" alt="WhatsApp Image 2025-02-28 at 17 21 08" src="https://github.com/user-attachments/assets/e5e32f96-1ab8-466a-9f82-bec5fd78614a" />
+<img width="250" alt="WhatsApp Image 2025-02-28 at 17 21 09" src="https://github.com/user-attachments/assets/38320dd0-70cc-4373-a50d-20ac4bc1af47" />
+<img width="250" alt="WhatsApp Image 2025-02-28 at 17 21 09" src="https://github.com/user-attachments/assets/0c1037a6-873a-48b6-884b-257c081f1854" />
 
 
 
