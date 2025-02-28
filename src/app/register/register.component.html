@@ -1,7 +1,7 @@
 <div class="min-h-screen flex">
     <div class="w-full lg:w-[40%] xl:w-[35%] bg-[#1a1f25] p-8 lg:p-16 flex flex-col justify-center">
         <div class="mb-12">
-            <a routerLink="/" class="flex items-center space-x-2 text-red-500 text-2xl font-bold">
+            <a routerLink="/" class="flex items-center text-red-500 text-2xl font-bold gap-2">
                 <lucide-angular [img]="film" class="my-icon" [size]="32"></lucide-angular>
                 <span>FletNix</span>
             </a>
@@ -11,7 +11,7 @@
         <p class="text-gray-400 mb-8">Join FletNix today and get access to thousands of movies and TV shows.</p>
 
         <form class="space-y-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div>
+            <div class="mb-6">
                 <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
                 <div class="relative">
                     <span-lucide [img]="user" class="absolute left-1.5 top-1/2 transform -translate-y-1/2 text-gray-400"
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="mb-6">
                 <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
                 <div class="relative">
                     <lucide-angular [img]="mail"
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="mb-6">
                 <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
                 <div class="relative">
                     <lucide-angular [img]="lock"
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="mb-6">
                 <label for="dob" class="block text-sm font-medium text-gray-300 mb-2">Date of Birth</label>
                 <div class="relative">
                     <lucide-angular [img]="calendar"
