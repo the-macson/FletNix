@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-[#0f1117] text-white">
     <header class="bg-[#0f1117] py-3 px-4 md:py-4 md:px-6 flex items-center">
-        <button class="flex items-center space-x-1 md:space-x-2 text-gray-300 hover:text-white transition cursor-pointer"
+        <button class="flex items-center gap-1 md:gap-2 text-gray-300 hover:text-white transition cursor-pointer"
             (click)="goToHome()">
             <lucide-angular [img]="arrowLeft" class="my-icon h-4 w-4 md:h-5 md:w-5"></lucide-angular>
             <span>Back</span>
@@ -20,7 +20,7 @@
 
                 <div class="absolute bottom-0 left-0 p-4 md:p-6 lg:p-8 z-20 w-full">
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">{{ show?.title }}</h1>
-                    <div class="flex items-center space-x-2 md:space-x-4 mb-3 md:mb-6 text-sm md:text-base">
+                    <div class="flex items-center gap-2 md:gap-4 mb-3 md:mb-6 text-sm md:text-base">
                         <span class="text-gray-300">{{ show?.release_year }}</span>
                         <span class="text-gray-300">•</span>
                         <span class="bg-gray-700 px-2 py-1 rounded text-xs md:text-sm">{{ show?.rating }}</span>
@@ -73,7 +73,7 @@
                     <div class="bg-[#1a1d29] rounded-xl p-4 md:p-6">
                         <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Details</h3>
                         <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
-                            <div class="flex items-center space-x-3" *ngIf="show?.rating">
+                            <div class="flex items-center gap-3" *ngIf="show?.rating">
                                 <lucide-angular [img]="star"
                                     class="my-icon h-5 w-5 text-yellow-500 flex-shrink-0"></lucide-angular>
                                 <div>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center space-x-3" *ngIf="show?.release_year">
+                            <div class="flex items-center gap-3" *ngIf="show?.release_year">
                                 <lucide-angular [img]="calendar"
                                     class="my-icon h-5 w-5 text-blue-500 flex-shrink-0"></lucide-angular>
                                 <div>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center space-x-3" *ngIf="show?.duration">
+                            <div class="flex items-center gap-3" *ngIf="show?.duration">
                                 <lucide-angular [img]="clock"
                                     class="my-icon h-5 w-5 text-green-500 flex-shrink-0"></lucide-angular>
                                 <div>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center space-x-3" *ngIf="show?.country">
+                            <div class="flex items-center gap-3" *ngIf="show?.country">
                                 <lucide-angular [img]="globe"
                                     class="my-icon h-5 w-5 text-purple-500 flex-shrink-0"></lucide-angular>
                                 <div>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center space-x-3" *ngIf="show?.type">
+                            <div class="flex items-center gap-3" *ngIf="show?.type">
                                 <lucide-angular [img]="listFilter"
                                     class="my-icon h-5 w-5 text-red-500 flex-shrink-0"></lucide-angular>
                                 <div>

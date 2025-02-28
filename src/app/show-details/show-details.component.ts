@@ -55,7 +55,7 @@ export class ShowDetailsComponent implements OnInit {
   readonly loader = Loader;
   showId: string | null = null;
   show: Show | null = null;
-  isLoading = false;
+  isLoading = true;
 
   constructor(
     private router: Router,
