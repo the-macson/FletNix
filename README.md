@@ -1,59 +1,70 @@
 # FletNix
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+## Description
 
-## Development server
+FletNix is a streaming service that allows users to watch movies and TV shows.
 
+## Active Link 
+[FlitNix](https://flet-nix-xi.vercel.app/)
+
+## Backend Code 
+[Backend Code](https://github.com/the-macson/FletNix-Backend)
+
+## Important Note
+- Free tier hosting services are used, so the initial loading of the website may take some time.
+
+## Features
+- User can view all movies and TV shows.
+- User can view details of a movie or TV show.
+- User can search for a movie or TV show on the basis of title and cast.
+- Only Authenticated users can view the list and details of movies and TV shows.
+
+## Technologies
+- Angular
+- Node.js
+- Express.js
+- MongoDB
+
+## Hosting
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+
+## Screenshots
+
+
+## Local Setup
 To start a local development server, run:
 
 ```bash
-ng serve
+git clone https://github.com/the-macson/FletNix
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-ng generate component component-name
+cd FletNix
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash
-ng generate --help
+npm install
 ```
-
-## Building
-
-To build the project run:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+For Backend setup
+```bash
+git clone https://github.com/the-macson/FletNix-Backend
+```
 
 ```bash
-ng test
+cd FletNix-Backend
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm start
+```
