@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
   readonly menu = Menu;
   readonly loader = Loader;
 
-  showFilterPopup = false;
   showMobileMenu = false;
   showList: Show[] = [];
   page = 1;
@@ -63,12 +62,13 @@ export class HomeComponent implements OnInit {
   showType: string | undefined = undefined;
   searchKey: string | undefined = undefined;
   isNextPage: boolean = true;
+  timeout: any;
+  isLoading = true;
+  
   constructor(
     private apiService: ApiService,
     private authService: AuthService
   ) {}
-  timeout: any;
-  isLoading = true;
 
   ngOnInit(): void {
     this.fetchShows(this.page, this.limit, this.showType, this.searchKey);

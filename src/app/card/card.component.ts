@@ -14,8 +14,6 @@ export class CardComponent {
   @Input() type!: string;
   @Input() year!: number;
   @Input() rating!: string;
-  @Input() image!: string;
-  @Output() showSelected = new EventEmitter<void>();
   constructor(private authService: AuthService, private router: Router) {}
 
   goToDetails(id: string) {
