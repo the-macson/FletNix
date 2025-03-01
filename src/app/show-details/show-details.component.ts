@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/auth.service';
 import {
   LucideAngularModule,
   Play,
@@ -60,7 +61,8 @@ export class ShowDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +81,9 @@ export class ShowDetailsComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
+        if(error.status === 401) {
+          this.authService.logout();
+        }
         this.isLoading = false;
         console.error(error);
       },
