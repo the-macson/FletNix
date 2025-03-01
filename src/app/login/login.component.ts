@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import {
   FormBuilder,
@@ -22,23 +22,37 @@ import { RouterModule, Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   readonly mail = Mail;
   readonly lock = Lock;
   readonly user = User;
   readonly calendar = Calendar;
   readonly film = Film;
   loginForm: FormGroup;
-  
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.startServerless().subscribe();
-    if(this.authService.isAuthenticated()){
-      this.router.navigate(['/']);
-    }
-    this.loginForm = new FormBuilder().group({
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.authService.startServerless().subscribe({
+      next: () => {
+        console.log('Serverless started');
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
+  }
+  
+  ngOnInit() {    
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit() {

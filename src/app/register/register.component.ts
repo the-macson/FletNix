@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   LucideAngularModule,
   Mail,
@@ -22,7 +22,7 @@ import {
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   readonly mail = Mail;
   readonly lock = Lock;
   readonly user = User;
@@ -30,12 +30,20 @@ export class RegisterComponent {
   readonly film = Film;
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.startServerless().subscribe();
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
-    }
-    this.registerForm = new FormBuilder().group({
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.authService.startServerless().subscribe({
+      next: () => {
+        console.log('Serverless started');
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+    this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -43,6 +51,12 @@ export class RegisterComponent {
     });
   }
 
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
+  }
+  
   onSubmit() {
     if (this.registerForm.valid) {
       const { name, email, password, dob } = this.registerForm.value;
